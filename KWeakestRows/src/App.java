@@ -14,20 +14,18 @@ public class App {
             }
             res.put(i, count);
         }
-        for (int i = 0; i < res.size(); i++) {
-            int min = res.get(0);
-            int index = 0;
-            for (int j = 0; j < res.size(); j++) {
-                if (res.get(j) != -1) {
-                    if (res.get(j) < min) {
-                        min = res.get(j);
-                        index = j;
-                    }
-                }
-                else{ index++;}
-            }
-            System.out.println(index);
-            res.put(index, -1);
-        }
+        // int index = 0;
+        // for (int i = 0; i < res.size(); i++) {
+        //     int min = res.get(i);
+        //     if (min >= 0)
+        //         for (int j = 0; j < res.size(); j++) {
+        //             if (res.get(j) < min) {
+        //                 min = res.get(j);
+        //                 index = j;
+        //             }
+        //         }
+        //     System.out.println(index);
+        //     res.put(index, -1);
+        // }
     }
 }
