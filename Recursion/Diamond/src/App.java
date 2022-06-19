@@ -1,15 +1,14 @@
 public class App {
-    static void diamond(int n, int row, int col) {
+
+    // PRINTING UPPER HALF
+    static void printUpperHalf(int n, int row) {
         if (row > n) {
             return;
         }
         printSpaces(n - row);
-        if(col % 2 == 0){
-            print
-        }
         printStars(row);
         System.out.println();
-        diamond(n, row + 1, col);
+        printUpperHalf(n, row + 1);
     }
 
     static void printSpaces(int noOfSpaces) {
@@ -21,17 +20,33 @@ public class App {
     }
 
     static void printStars(int noOfStars) {
+
         if (noOfStars == 0) {
             return;
         }
-        System.out.print("*");
-        printSpaces(noOfStars - 1);
+        System.out.print("* ");
+        printStars(noOfStars - 1);
+    }
+
+    // PRINTING LOWER HALF
+    static void printLowerHalf(int n, int row) {
+        if (row == 0) {
+            return;
+        }
+        printSpaces(n - row);
+        printStars(row);
+        System.out.println();
+        printLowerHalf(n, row - 1);
     }
 
     public static void main(String[] args) throws Exception {
-        int n = 5;
+        int n = 6;
         int row = 1;
-        int col = 1;
-        diamond(n, row, col);
+        // PRINT UPPER HALF
+        printUpperHalf(n, row);
+
+        // PRINT LOWER HALF
+        row = n;
+        printLowerHalf(n, row);
     }
 }
