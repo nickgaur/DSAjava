@@ -1,7 +1,12 @@
 public class App {
+    static void swap(int arr[], int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     public static void main(String[] args) throws Exception {
         int arr[] = { 0, 1, 1, 0, 1, 0, 1 };
-        int t = 0;
 
         // NAIVE APPROACH
         // int count = 0;
@@ -18,14 +23,18 @@ public class App {
         // }
 
         // EFFICIENT APPROACH
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 0) {
-                int temp = arr[i];
-                arr[i] = arr[t];
-                arr[t] = temp;
-                t++;
-            } else {
-                t = i;
+        int high = arr.length - 1;
+        int mid = 0;
+        while (mid <= high) {
+            switch (arr[mid]) {
+                case 0:
+                    mid++;
+                    break;
+                case 1: {
+                    swap(arr, mid, high);
+                    high--;
+                    break;
+                }
             }
         }
 
