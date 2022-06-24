@@ -24,14 +24,14 @@ public class App {
 
         // EFFICIENT APPROACH
         int high = arr.length - 1;
-        int mid = 0;
-        while (mid <= high) {
-            switch (arr[mid]) {
+        int low = 0;
+        while (low <= high) {
+            switch (arr[low]) {
                 case 0:
-                    mid++;
+                    low++;
                     break;
                 case 1: {
-                    swap(arr, mid, high);
+                    swap(arr, low, high);
                     high--;
                     break;
                 }
