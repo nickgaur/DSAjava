@@ -1,30 +1,29 @@
 import java.util.ArrayList;
 
 public class App {
-    static ArrayList<String> reachToTen(int currentValue, int endValue) {
-        if (currentValue == endValue) {
+    static ArrayList<String> distinctWays(int n, int sum) {
+        if (sum == n) {
             ArrayList<String> list = new ArrayList<>();
             list.add("");
             return list;
         }
-        if (currentValue > endValue) {
+
+        else if (sum > n) {
             ArrayList<String> list = new ArrayList<>();
             return list;
         }
-
         ArrayList<String> result = new ArrayList<>();
-        for (int dice = 1; dice <= 6; dice++) {
-            ArrayList<String> returnedList = reachToTen(dice + currentValue, endValue);
+        for (int i = 1; i <= n; i++) {
+            ArrayList<String> returnedList = distinctWays(n, sum + i);
             for (String elem : returnedList) {
-                result.add(elem + dice);
+                result.add(elem + i);
             }
-
         }
         return result;
     }
 
-    public static void main(String[] args) {
-        ArrayList<String> list = reachToTen(0, 3);
+    public static void main(String[] args) throws Exception {
+        ArrayList<String> list = distinctWays(3, 0);
         System.out.println(list);
     }
 }
