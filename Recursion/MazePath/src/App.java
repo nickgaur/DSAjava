@@ -27,7 +27,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        ArrayList<String> list = getMaze(0, 0, 2, 1);
+        ArrayList<String> list = getMaze(0, 0, 2, 2);
         System.out.println(list);
     }
 }
