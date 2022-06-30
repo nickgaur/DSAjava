@@ -1,29 +1,16 @@
-import java.util.ArrayList;
-
 public class App {
-    static ArrayList<String> distinctWays(int n, int sum) {
-        if (sum == n) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add("");
-            return list;
+    static int fib(int n){
+        if(n == 0 || n == 1){
+            return n;
         }
-
-        else if (sum > n) {
-            ArrayList<String> list = new ArrayList<>();
-            return list;
-        }
-        ArrayList<String> result = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            ArrayList<String> returnedList = distinctWays(n, sum + i);
-            for (String elem : returnedList) {
-                result.add(elem + i);
-            }
-        }
-        return result;
+        return (fib(n-1) + fib(n-2));
+    }
+    static int climbStairs(int n) {
+        return fib(n + 1);
     }
 
     public static void main(String[] args) throws Exception {
-        ArrayList<String> list = distinctWays(3, 0);
-        System.out.println(list);
+        int res = climbStairs(3);
+        System.out.println(res);
     }
 }
