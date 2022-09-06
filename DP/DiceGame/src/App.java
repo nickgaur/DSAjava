@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class App {
+    static HashMap<Integer, ArrayList<String>> map = new HashMap<>();
     static int call = 0;
     static ArrayList<String> reachToTen(int currentValue, int endValue) {
         if (currentValue == endValue) {
@@ -15,8 +17,16 @@ public class App {
 
         ArrayList<String> result = new ArrayList<>();
         for (int dice = 1; dice <= 6; dice++) {
-            ArrayList<String> returnedList = reachToTen(dice + currentValue, endValue);
-            call++;
+            int newValue = dice + currentValue;
+            ArrayList<String> returnedList = new ArrayList<>();
+            if(map.containsKey(newValue)){
+                returnedList = map.get(newValue);
+            }
+            else{
+                returnedList = reachToTen(newValue, endValue);
+                call++;
+                map.put(newValue, returnedList);
+            }
             for (String elem : returnedList) {
                 result.add(elem + dice);
             }
